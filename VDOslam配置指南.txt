@@ -1,0 +1,13 @@
+目的：生成和demo_kitti一样的数据格式
+方法：首先下载kitti的tracking数据集和label
+编译作者提供的tools中的kitti_mask_sem2gt
+g++ kitti_mask_sem2gt.cpp -o kitti_mask_sem2gt $(pkg_config -flags --libs opencv)
+运行./kitti_mask_sem2gt PATH_TO_FOLDER
+其中PATH_TO_FOLDER中包括times.txt, mask文件夹, object_pose.txt
+times.txt是数据集已有的
+我们需要去生成mask文件夹中的.mask文件和object_pose.txt
+（1）generate_mask.py用来生成.mask文件，放置于mask_rcnn文件夹中运行，其中的images文件夹中放置相应的数据集图像
+（2）label2objectpose.py用来生成object_pose.txt，读取的是data_tracking_label中的数据集label的txt文件
+
+我们还需要生成.flo文件，已提供gene_kitti_flo.py脚本，放置于pytorch-pwc-cupy中运行。
+我们还需要生成深度图，建议采用aanet或者psmnet，配置较为简单。
