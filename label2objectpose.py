@@ -24,13 +24,13 @@ def str2num(objstr):
 
 
 
-with open("0020.txt", 'r') as f:
-    for line in f.readlines():
-        #line = line.strip('\n')
-        ds = line.split()
-        if ds[2]!="DontCare":
-            #print(ds[0]+" "+ds[2]+" "+ds[6]+" "+ds[7]+" "+ds[8]+" "+ds[9]+" "+ds[13]+" "+ds[14]+" "+ds[15]+" "+ds[16])
-            #print(str2num(ds[2]))
+with open("object_pose.txt", 'w') as wf:
+    with open("0020.txt", 'r') as f:
+        for line in f.readlines():
+            #line = line.strip('\n')
+            ds = line.split()
+            if ds[2]!="DontCare":
+                wf.write(ds[0]+" "+str2num(ds[2])+" "+ds[6]+" "+ds[7]+" "+ds[8]+" "+ds[9]+" "+ds[13]+" "+ds[14]+" "+ds[15]+" "+ds[16]+"\n")
 
 
 
